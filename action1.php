@@ -24,7 +24,7 @@ if(isset($_POST["action"]))
   );
   $result = $statement->fetchAll();
   $count = $statement->rowCount();
-
+  $output .= '<h3 style="text-align:center">Active online users - '.$count.'</h3>';
   $i = 0;
   foreach($result as $row)
   {
