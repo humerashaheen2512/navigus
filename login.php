@@ -3,7 +3,7 @@
 include('data4.php');
 if(isset($_SESSION["type"]))
 {
- header("location: index1.php");
+ header("location: index.php");
 }
 $message = '';
 
@@ -49,8 +49,20 @@ if(isset($_POST["login"]))
      if(!empty($login_id))
      {
       $_SESSION["type"] = $row["user_type"];
+	  $_SESSION["user_id"] = $row["user_id"];
       $_SESSION["login_id"] = $login_id;
       $_SESSION["mail"]=$row["user_email"];
+	  
+	  $update_query = "
+     UPDATE `user_details` SET `online_status` = '1' WHERE `user_id` = :user_id;
+     ";
+     $statement = $pdo->prepare($update_query);
+     $statement->execute(
+      array(
+       'user_id'  => $row["user_id"],
+      )
+     );
+	  
       header("location: index.php");
      }
     }

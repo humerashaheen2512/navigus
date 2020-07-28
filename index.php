@@ -15,6 +15,33 @@ if(!isset($_SESSION["type"]))
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+div.click-to-top {
+display:inline-block;
+position:relative;
+max-width:160px;
+margin-left:10%
+}
+
+div.click-to-top:hover{
+z-index:10;
+}
+
+div.click-to-top img{
+-webkit-transition: all 0.8s;
+moz-transition: all 0.8s;
+transition: all 0.8s;
+width:130px;
+}
+
+div.click-to-top img:hover{
+width:140px;
+z-index:10;
+}
+
+div.click-to-top span {display: none; position: absolute; bottom: 0; left: 0; right: 0; background: #fff; color: #333; }
+div.click-to-top:hover span {display: block; }
+  </style>
  </head>
  <body>
   <br />
@@ -29,6 +56,8 @@ if(!isset($_SESSION["type"]))
    if($_SESSION["type"] =="user")
    {
     echo '<div align="center"><h2>Hi... Welcome '.$_SESSION['mail'].'</h2></div>';
+	echo '<div id="user_login_status" class="panel-body">Loading....</div>';
+	
    }
    else
    {
@@ -61,7 +90,7 @@ function update_user_activity()
   data:{action:action},
   success:function(data)
   {
-
+    $('#user_login_status').html(data);
   }
  });
 }
@@ -97,4 +126,4 @@ function fetch_user_login_data()
 ?>
 
 });
-</script>-->
+</script>

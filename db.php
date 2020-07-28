@@ -43,11 +43,15 @@ include 'data4.php';
   $data=$stmt1->fetchAll();
   if(!$data)
   {
-    $sql = "INSERT INTO user_details (user_email,user_password,user_type) VALUES (:user_email,:user_password,:user_type)";
+  
+  
+  $iconBadge = array('002-bear.png', '003-lion.png', '004-badger.png', '006-bird.png', '015-penguin.png');
+  
+   $sql = "INSERT INTO user_details (user_email, user_password, user_type, user_icon) VALUES (:user_email,:user_password,:user_type,:user_icon)";
    $stmt=$pdo->prepare($sql);
-   $stmt->execute([':user_email'=>$email,':user_password'=>$password,':user_type'=>$usertype]);   
+   $stmt->execute([':user_email'=>$email,':user_password'=>$password,':user_type'=>$usertype, ':user_icon'=>$iconBadge[rand(0,4)]]);   
    echo '<div class="alert"><span class="closebtn"></span><strong>SUCCESSFULLY!</strong> REGISTERED SUCCESSFULLY.</div>';
-   echo '</br><div style="margin: 0 0 0 47%;"><a  href="login1.php" class="btn btn-info" style="text-align: center;">login</a></div>';
+   echo '</br><div style="margin: 0 0 0 47%;"><a  href="login.php" class="btn btn-info" style="text-align: center;">login</a></div>';
  }
  else 
  {

@@ -13,6 +13,29 @@ if(isset($_POST["action"]))
     'login_details_id' => $_SESSION["login_id"]
    )
   );
+  
+  $output = '';
+  $query = "SELECT * FROM `user_details` WHERE `online_status`=1 AND `user_type`= 'user' AND user_id!= :user_id";
+  $statement = $pdo->prepare($query);
+  $statement->execute(
+  array(
+       'user_id'  => $_SESSION["user_id"],
+      )
+  );
+  $result = $statement->fetchAll();
+  $count = $statement->rowCount();
+
+  $i = 0;
+  foreach($result as $row)
+  {
+   $i = $i + 1;
+   $output .= '<div class="click-to-top"><img src="icons/'.$row["user_icon"].'" alt="Avatar" style="width:100px"><span>'.$row['user_email'].'</span></div>';
+  }
+  echo $output;
+
+  
+  
+  
  }
  if($_POST["action"] == "fetch_data")
  {
@@ -23,6 +46,7 @@ if(isset($_POST["action"]))
   ON user_details.user_id = login_details.user_id 
   WHERE last_activity <= DATE_SUB(NOW(), INTERVAL 5 SECOND) 
   AND user_details.user_type = 'user'
+  GROUP By login_details.user_id ORDER BY login_details.last_activity DESC
   ";
   $statement = $pdo->prepare($query);
   $statement->execute();
