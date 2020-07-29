@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors",1);
 $username="o1qm1dx7spekawdo";
 $pass="gefy467mhssdhsag";
 
