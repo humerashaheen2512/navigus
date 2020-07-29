@@ -85,7 +85,7 @@ if(isset($_POST["login"]))
 <!DOCTYPE html>
 <html>
  <head>
-  <title>How Display Users Online using PHP with Ajax JQuery</title>
+  <title>How to display users online using PHP with Ajax JQuery</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -93,7 +93,7 @@ if(isset($_POST["login"]))
  <body>
   <br />
   <div class="container">
-   <h2 align="center">How Display Users Online using PHP with Ajax JQuery</h2>
+   <h2 align="center">How to display users online using PHP with Ajax JQuery</h2>
    <br />
    <div class="panel panel-default">
     <div class="panel-heading">Login</div>
